@@ -6,22 +6,24 @@ import string
 class BruteForceWordleSolver:
     alphabet = set(string.ascii_lowercase)
     d = enchant.Dict('en_US')
+
     def __init__(self, args):
-        self.grays = set(args.grays)
+        self.grays = {} if args.grays is None else set(args.grays)
         self.yellows = self.dictionarize(args.yellows)
         self.greens = self.dictionarize(args.greens)
         self.yellows_list = set(self.yellows.values()).difference('?')
-        print('\nGreens:', self.greens)
+        print('\nGreens :', self.greens)
         print('Yellows:', self.yellows)
-        print('Grays:', self.grays)
+        print('Grays  :', self.grays)
         print('\nValid wordles:')
 
-    def dictionarize(self, matrix):
+    def dictionarize(self, pair):
         d = dict()
         for i in range(1, 6):
             d[i] = '?'
-        for row in matrix:
-            d[int(row[1])] = row[0]
+        if pair is not None:
+            for row in pair:
+                d[int(row[1])] = row[0]
         return d
 
     def valid_ith_alphabet(self, i):
@@ -32,7 +34,6 @@ class BruteForceWordleSolver:
             return self.greens[i]
 
     def run(self):
-
         for _1 in self.valid_ith_alphabet(1):
             for _2 in self.valid_ith_alphabet(2):
                 for _3 in self.valid_ith_alphabet(3):
