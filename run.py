@@ -23,7 +23,7 @@ class BruteForceWordleSolver:
             d[i] = '?'
         if pair is not None:
             for row in pair:
-                d[int(row[1])] = row[0]
+                d[int(row[1])] = row[0].lower()
         return d
 
     def valid_ith_alphabet(self, i):
@@ -45,10 +45,9 @@ class BruteForceWordleSolver:
 
 
 if __name__ == '__main__':
-    pair = lambda x: x.split(',')
     parser = argparse.ArgumentParser('Brute Force Wordle Answer Generation Program')
-    parser.add_argument('--yellows', type=pair, nargs='+', help='list {alphabet, index} pairs eg) a,2 b,3')
-    parser.add_argument('--greens', type=pair, nargs='+', help='list {alphabet, index} pairs eg) c,4 d,5')
+    parser.add_argument('--yellows', type=str, nargs='+', help='list {alphabet, index} pairs eg) a2 b3')
+    parser.add_argument('--greens', type=str, nargs='+', help='list {alphabet, index} pairs eg) c4 d5')
     parser.add_argument('--grays', type=str, nargs='+', help='list alphabet eg) q w e')
 
     args = parser.parse_args()
