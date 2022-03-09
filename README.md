@@ -24,4 +24,4 @@ At this moment the following command gives you all possible words in `pyenchant`
 python run.py --greens y2 n3 --yellows n1 i3 c4 --grays a s d e u o h l
 ```
 
-<img src="assets/wordle240sol.png" alt="result" width="400"/>
+<img src="assets/wordle240sol.png" alt="result" width="800"/>
